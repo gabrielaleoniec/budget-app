@@ -8,11 +8,10 @@
   "scripts": {
     "build": "webpack",
     "serve": "live-server public",
-    "serve:dev": "webpack serve"
+    "serve:dev": "webpack serve",
+    "test": "jest --watch"
   },
   "dependencies": {
-    "live-server": "^1.2.1",
-    "webpack": "^5.3.2",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
@@ -29,7 +28,12 @@
     "sass-loader": "^10.0.5",
     "style-loader": "^2.0.0",
     "uuid": "^8.3.1",
+    "webpack": "^5.3.2",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "live-server": "^1.2.1"
   }
 }

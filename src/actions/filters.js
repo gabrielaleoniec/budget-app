@@ -14,11 +14,10 @@ export const sortByAmount = () => ({
 });
 
 export const setStartDate = (startDateString = '') => {
-    const startDate = new Date(startDateString);
-    const dateAsMiliseconds = Date.parse(startDate);
+    const startDate = new Date(startDateString).valueOf();
     return {
         type: "SET_START_DATE",
-        startDate: isNaN(dateAsMiliseconds) ? undefined : dateAsMiliseconds
+        startDate: isNaN(startDate) ? undefined : startDate
     }
 }
 

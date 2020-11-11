@@ -17,9 +17,7 @@ const EditExpensePage = (props) => {
             <h2>Edit expense</h2>
             <ExpenseForm onSubmit={(expense) => {
                 const createdAt = typeof expense.createdAt === 'string' ? moment(expense.createdAt).valueOf() : expense.createdAt;
-                console.log(createdAt);
                 
-                console.log('Edited', expense, typeof expense.createdAt);
                 props.dispatch(updateExpense(id, {...expense, createdAt}));
                 props.history.push('/');
             }} expense={props.expense} />
