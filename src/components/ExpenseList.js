@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import filteredExpenses from '../selectors/expenses';
 
-const ExpenseList = (props) => {
+export const ExpenseList = (props) => {
     if(!props.expenses.length) {
         return <p>The list of expenses is empty</p>
     }

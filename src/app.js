@@ -8,7 +8,7 @@ import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from '../src/selectors/expenses';
 
 import './styles/styles.scss';
-
+import 'react-dates/lib/css/_datepicker.css';
 
 store.dispatch(addExpense({ description: 'water bill', amount: 1000, createdAt: '2019-05-12' }));
 store.dispatch(addExpense({ description: 'house', amount: 45000000, createdAt: '2020-08-12' }));
