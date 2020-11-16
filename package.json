@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "description": "Application for storing your expenses",
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "yarn": "1.x"
   },
   "main": "public/index.html",
   "author": "Gabriela Leoniec",
   "license": "MIT",
   "scripts": {
-    "build:prod": "webpack --env=production --color",
+    "build": "webpack --env=production --color",
     "serve": "live-server public",
     "build:dev": "webpack",
     "serve:dev": "webpack serve",
     "test": "jest --watch --config=jest.config.json",
-    "start": "node server/server.js",
-    "heroku-postbuild": "yarn run build:prod"
+    "start": "node server/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
