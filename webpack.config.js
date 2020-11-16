@@ -1,31 +1,42 @@
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-    entry: './src/app.js',
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
-    },
-    module: {
-        rules: [
-            {
-                loader: 'babel-loader', 
-                test : /\.js$/,
-                exclude: path.join(__dirname, 'node_modules')
-            },
-            {
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ],
-                test: /\.s?css$/
-            }
-        ]
-    },
-    devtool: 'eval-cheap-module-source-map',
-    devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true
-    }    
+module.exports = (env) => {
+    const isProduction = env && env.production
+    return {
+        mode: isProduction ? 'production' : 'development',
+        entry: './src/app.js',
+        output: {
+            path: path.join(__dirname, 'public'),
+            filename: 'bundle.js'
+        },
+        module: {
+            rules: [
+                {
+                    loader: 'babel-loader',
+                    test: /\.js$/,
+                    exclude: path.join(__dirname, 'node_modules')
+                },
+                {
+                    use: [
+                        MiniCSSExtractPlugin.loader, 
+                        'css-loader',
+                        'sass-loader'
+                    ],
+                    test: /\.s?css$/
+                }
+            ]
+        },
+        plugins: [
+            new MiniCSSExtractPlugin()
+        ],
+        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devServer: {
+            contentBase: path.join(__dirname, 'public'),
+            historyApiFallback: true
+        },
+        stats: {
+            orphanModules: true
+        }
+    }
 }
