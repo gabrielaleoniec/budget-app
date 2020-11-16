@@ -9,10 +9,10 @@ exports[`Should render ExpenseListItem with properties 1`] = `
     Too expensive
   </td>
   <td>
-    45000
+    450.00 zł
   </td>
   <td>
-    14-06-2020
+    2020-06-14
   </td>
   <td>
     <Link
