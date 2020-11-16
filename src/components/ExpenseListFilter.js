@@ -5,7 +5,7 @@ import 'react-dates/initialize';
 import moment from 'moment';
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
 
-class ExpenseListFilter extends React.Component {
+export class ExpenseListFilter extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -16,20 +16,31 @@ class ExpenseListFilter extends React.Component {
         endDate: moment().endOf('month')
     }
 
+    onTextChange = (e) => {
+        this.props.setTextFilter(e.target.value);
+    }
+
     onDatesChange = ({ startDate, endDate }) => {
         this.setState({ startDate, endDate })
-        this.props.dispatch(setStartDate(startDate));
-        this.props.dispatch(setEndDate(endDate));
+        this.props.setStartDate(startDate);
+        this.props.setEndDate(endDate);
     }
+
+    onSortChange = (e) => {
+        switch (e.target.value) {
+            case 'date': return this.props.sortByDate();
+            case 'amount': return this.props.sortByAmount();
+        }
+    }
+
+    onFocusChange = focusedInput => this.setState({ focusedInput });
 
     render() {
         return <div>
             <input
                 type="text"
                 value={this.props.filters.text}
-                onChange={(e) => {
-                    this.props.dispatch(setTextFilter(e.target.value));
-                }}
+                onChange={this.onTextChange}
             />
             <div>
                 <DateRangePicker
@@ -39,7 +50,7 @@ class ExpenseListFilter extends React.Component {
                     endDateId="filter_end_date" // PropTypes.string.isRequired,
                     onDatesChange={this.onDatesChange} // PropTypes.func.isRequired,
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                    onFocusChange={this.onFocusChange} // PropTypes.func.isRequired,
                     displayFormat="DD-MM-YYYY"
                     numberOfMonths={1}
                     isOutsideRange={()=>false}
@@ -49,12 +60,7 @@ class ExpenseListFilter extends React.Component {
 
             <select
                 value={this.props.filters.sortBy}
-                onChange={(e) => {
-                    switch (e.target.value) {
-                        case 'date': return this.props.dispatch(sortByDate());
-                        case 'amount': return this.props.dispatch(sortByAmount());
-                    }
-                }}>
+                onChange={this.onSortChange}>
                 <option value="date">Date</option>
                 <option value="amount">Amount</option>
             </select>
@@ -62,8 +68,16 @@ class ExpenseListFilter extends React.Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) =>({
+    setTextFilter: (text) => dispatch(setTextFilter(text)),
+    setStartDate: (startDate) => dispatch(setStartDate(startDate)),
+    setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+    sortByDate: () => dispatch(sortByDate()),
+    sortByAmount: () => dispatch(sortByAmount())
+})
+
 const mapStateToProps = (state) => ({
     filters: state.filters
 })
 
-export default connect(mapStateToProps)(ExpenseListFilter);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilter);

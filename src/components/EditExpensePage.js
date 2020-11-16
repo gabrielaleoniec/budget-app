@@ -3,38 +3,44 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import ExpenseForm from './ExpenseForm';
-import { updateExpense } from '../actions/expenses';
-import { removeExpense } from '../actions/expenses';
+import { updateExpense, removeExpense } from '../actions/expenses';
 
-const EditExpensePage = (props) => {
-    if(!props.expense || !props.expense.id) {
-        return <p>Expense for the given id does not exist</p>
+export class EditExpensePage extends React.Component {
+    onSubmit = (expense) => {
+        const createdAt = typeof expense.createdAt === 'string' ? moment(expense.createdAt).valueOf() : expense.createdAt;
+
+        this.props.updateExpense(this.props.expense.id, { ...expense, createdAt });
+        this.props.history.push('/');
     }
 
-    const id = props.expense.id;
-    return (
-        <div>
-            <h2>Edit expense</h2>
-            <ExpenseForm onSubmit={(expense) => {
-                const createdAt = typeof expense.createdAt === 'string' ? moment(expense.createdAt).valueOf() : expense.createdAt;
-                
-                props.dispatch(updateExpense(id, {...expense, createdAt}));
-                props.history.push('/');
-            }} expense={props.expense} />
+    onRemove = () => {
+        this.props.removeExpense({ id: this.props.expense.id });
+        this.props.history.push('/');
+    }
+
+    render() {
+        if (!this.props.expense || !this.props.expense.id) {
+            return <p>Expense for the given id does not exist</p>
+        }
+
+        return (
             <div>
-                <button onClick={(e) => {
-                    props.dispatch(removeExpense({ id }))
-                    props.history.push('/');
-                }}>Remove</button>
+                <h2>Edit expense</h2>
+                <ExpenseForm onSubmit={this.onSubmit} expense={this.props.expense} />
+                <div>
+                    <button onClick={this.onRemove}>Remove</button>
+                </div>
             </div>
-        </div>
-    )
-}
-const mapStateToProps = (state, props) => {
-    const id = props.match.params.id;
-    return {
-        expense: state.expenses.find((expense) => expense.id === id)
+        )
     }
 }
+const mapDispatchToProps = (dispatch, props) => ({
+    updateExpense: (id, expense) => dispatch(updateExpense(id, expense)),
+    removeExpense: (data) => dispatch(removeExpense(data))
+})
 
-export default connect(mapStateToProps)(EditExpensePage);
+const mapStateToProps = (state, props) => ({
+    expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);

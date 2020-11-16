@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should not set amount on input change when value is not numeric 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value="Shoes"
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      >
+        Too expensive
+      </textarea>
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value="450"
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="2020-06-14"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Should render ExpenseForm correctly 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      />
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value=""
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="1970-01-01"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Should render ExpenseForm correctly with expense data 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value="Shoes"
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      >
+        Too expensive
+      </textarea>
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value="450"
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="2020-06-14"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Should render error when required data not provided 1`] = `
+<div>
+  <p>
+    Please provide description and amount
+  </p>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      />
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value=""
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="1970-01-01"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Should set amount on input change 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value="Shoes"
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      >
+        Too expensive
+      </textarea>
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value="33300"
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="2020-06-14"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Should set description on input change 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value="Bicycle repair"
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      >
+        Too expensive
+      </textarea>
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value="450"
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="2020-06-14"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Should set note on textarea change 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Description
+      <input
+        autoFocus={true}
+        name="description"
+        onChange={[Function]}
+        type="text"
+        value="Shoes"
+      />
+    </label>
+    <label>
+      Note
+      <textarea
+        name="note"
+        onChange={[Function]}
+        placeholder="Put some note here"
+      >
+        Better save
+      </textarea>
+    </label>
+    <label>
+      Amount
+      <input
+        name="amount"
+        onChange={[Function]}
+        type="number"
+        value="450"
+      />
+    </label>
+    <label>
+      Created at:
+      <input
+        name="createdAt"
+        onChange={[Function]}
+        type="date"
+        value="2020-06-14"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
