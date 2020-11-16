@@ -5,7 +5,8 @@ exports[`Should render ExpenseList with expenses 1`] = `
   <h3>
     Expense List
   </h3>
-  <table>
+  <div>
+    <_default />
     <ExpenseListItem
       amount={45000}
       createdAt={1592092800000}
@@ -38,7 +39,7 @@ exports[`Should render ExpenseList with expenses 1`] = `
       key="4"
       note=""
     />
-  </table>
+  </div>
 </div>
 `;
 

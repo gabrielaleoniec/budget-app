@@ -1,25 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render ExpenseListItem with properties 1`] = `
-<tr>
-  <td>
+<div>
+  <div />
+  <div>
     Shoes
-  </td>
-  <td>
+  </div>
+  <div>
     Too expensive
-  </td>
-  <td>
+  </div>
+  <div>
     450.00 zł
-  </td>
-  <td>
+  </div>
+  <div>
     2020-06-14
-  </td>
-  <td>
+  </div>
+  <div>
     <Link
       to="/edit/1"
     >
       Edit
     </Link>
-  </td>
-</tr>
+  </div>
+</div>
 `;

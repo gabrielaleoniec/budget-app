@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should correctly render ExpensesSummary for multiple expenses 1`] = `
+<h2>
+  \`There 
+  are
+   
+  3
+   
+  expenses
+   totalling to 
+  1200
+</h2>
+`;
+
+exports[`Should correctly render ExpensesSummary for multiple expenses 2`] = `
+<h2>
+  \`There 
+  is
+   
+  1
+   
+  expense
+   totalling to 
+  1200
+</h2>
+`;

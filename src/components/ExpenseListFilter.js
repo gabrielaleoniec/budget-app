@@ -12,7 +12,7 @@ export class ExpenseListFilter extends React.Component {
 
     state = {
         focusedInput: null,
-        startDate: moment().startOf('year'),
+        startDate: moment().startOf('year').subtract(1, 'year'),
         endDate: moment().endOf('month')
     }
 
