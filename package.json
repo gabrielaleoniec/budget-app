@@ -2,7 +2,10 @@
   "name": "budget-app",
   "version": "1.0.0",
   "description": "Application for storing your expenses",
-  "main": "index.html",
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "public/index.html",
   "author": "Gabriela Leoniec",
   "license": "MIT",
   "scripts": {
@@ -11,8 +14,7 @@
     "build:dev": "webpack",
     "serve:dev": "webpack serve",
     "test": "jest --watch --config=jest.config.json",
-    "start": "node server/server.js",
-    "heroku-postbuild": "yarn run build:prod"
+    "start": "node server/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
