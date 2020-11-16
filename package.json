@@ -14,7 +14,8 @@
     "build:dev": "webpack",
     "serve:dev": "webpack serve",
     "test": "jest --watch --config=jest.config.json",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
