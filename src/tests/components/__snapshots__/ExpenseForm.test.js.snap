@@ -21,9 +21,8 @@ exports[`Should not set amount on input change when value is not numeric 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
-      >
-        Too expensive
-      </textarea>
+        value="Too expensive"
+      />
     </label>
     <label>
       Amount
@@ -73,6 +72,7 @@ exports[`Should render ExpenseForm correctly 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
+        value=""
       />
     </label>
     <label>
@@ -123,9 +123,8 @@ exports[`Should render ExpenseForm correctly with expense data 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
-      >
-        Too expensive
-      </textarea>
+        value="Too expensive"
+      />
     </label>
     <label>
       Amount
@@ -178,6 +177,7 @@ exports[`Should render error when required data not provided 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
+        value=""
       />
     </label>
     <label>
@@ -228,9 +228,8 @@ exports[`Should set amount on input change 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
-      >
-        Too expensive
-      </textarea>
+        value="Too expensive"
+      />
     </label>
     <label>
       Amount
@@ -280,9 +279,8 @@ exports[`Should set description on input change 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
-      >
-        Too expensive
-      </textarea>
+        value="Too expensive"
+      />
     </label>
     <label>
       Amount
@@ -332,9 +330,8 @@ exports[`Should set note on textarea change 1`] = `
         name="note"
         onChange={[Function]}
         placeholder="Put some note here"
-      >
-        Better save
-      </textarea>
+        value="Better save"
+      />
     </label>
     <label>
       Amount

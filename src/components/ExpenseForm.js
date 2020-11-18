@@ -62,7 +62,7 @@ class ExpenseForm extends React.Component {
         this.props.onSubmit({
             description: this.state.description,
             note: this.state.note,
-            amount: parseFloat(this.state.amount, 10) * 100, 
+            amount: parseFloat(this.state.amount, 10) * 100,
             createdAt: this.state.createdAt
         });
     }
@@ -85,8 +85,8 @@ class ExpenseForm extends React.Component {
                             name="note"
                             onChange={this.onNoteChange}
                             placeholder="Put some note here"
+                            value={this.state.note}
                         >
-                            {this.state.note}
                         </textarea>
                     </label>
                     <label>Amount
