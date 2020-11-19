@@ -1,5 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+switch(process.env.NODE_ENV) {
+    case 'test': require('dotenv').config({path: '.env.test'}); break;
+    case 'development': require('dotenv').config({path: '.env.development'}); break;
+}
 
 module.exports = (env) => {
     const isProduction = env && env.production
@@ -19,7 +27,7 @@ module.exports = (env) => {
                 },
                 {
                     use: [
-                        MiniCSSExtractPlugin.loader, 
+                        MiniCSSExtractPlugin.loader,
                         'css-loader',
                         'sass-loader'
                     ],
@@ -28,7 +36,15 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new MiniCSSExtractPlugin()
+            new MiniCSSExtractPlugin(),
+            new webpack.DefinePlugin({
+                'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
+                'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+                'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+                'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+                'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+                'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
+            })
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {

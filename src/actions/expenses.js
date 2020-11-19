@@ -1,16 +1,31 @@
-import { v4 as uuidv4 } from 'uuid';
+import database from '../firebase/firebase';
 
-export const addExpense = ({ description = '', note = '', amount = 0, createdAt } = {}) => {
-    const date = createdAt ? new Date(createdAt) : new Date();
+export const addExpense = (expense = {}) => {
     return {
         type: "ADD_EXPENSE",
-        expense: {
-            id: uuidv4(),
-            description,
-            note,
-            amount,
-            createdAt: Date.parse(date)
-        }
+        expense
+    }
+}
+
+export const startAddExpense = (expenseData = {}) => {
+    return (dispatch) => {
+        const {
+            description = '',
+            note = '',
+            amount = 0,
+            createdAt = 0
+        } = expenseData;
+
+        const date = createdAt ? new Date(createdAt).valueOf() : new Date().valueOf();
+
+        const expense = { description, note, amount, createdAt: date };
+
+        return database.ref('expenses').push(expense).then((ref) => {
+            dispatch(addExpense({
+                ...expense,
+                id: ref.key
+            }))
+        });
     }
 }
 
@@ -24,4 +39,3 @@ export const updateExpense = (id, updates) => ({
     id,
     updates
 })
- 
