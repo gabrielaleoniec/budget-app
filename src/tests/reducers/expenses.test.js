@@ -22,7 +22,7 @@ test('Should remove expense from the array of expenses', () => {
 });
 
 test('Should not remove expense when id does not exist', () => {
-    const state = expensifyReducer(mockExpenses, {type: 'REMOVE_EXPENSE', id: '-1'});
+    const state = expensifyReducer(mockExpenses, { type: 'REMOVE_EXPENSE', id: '-1' });
     expect(state).toEqual([mockExpenses[0], mockExpenses[1], mockExpenses[2], mockExpenses[3]]);
 })
 
@@ -50,6 +50,25 @@ test('Should not update an expense when id does not exist', () => {
         note: 'Zielony Spichlerz',
         amount: 12650
     };
-    const state = expensifyReducer(mockExpenses, {type: 'UPDATE_EXPENSE', id: '-1', updates});
+    const state = expensifyReducer(mockExpenses, { type: 'UPDATE_EXPENSE', id: '-1', updates });
     expect(state).toEqual(mockExpenses);
 });
+
+test('Should setup expenses', () => {
+    const expenses = [
+        {
+            description: 'Hugo',
+            note: 'Hockey',
+            amount: 6000,
+            createdAt: new Date().valueOf()
+        },
+        {
+            description: 'Zuzia',
+            note: 'Books',
+            amount: 18000,
+            createdAt: new Date().valueOf()
+        }
+    ]
+    const state = expensifyReducer(mockExpenses, { type: 'SET_EXPENSES', expenses });
+    expect(state).toEqual(expenses)
+})

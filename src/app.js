@@ -3,23 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import store from './store/storeConfiguration';
-import { addExpense} from './actions/expenses';
+import { startSetExpenses, addExpense } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from '../src/selectors/expenses';
 
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-
-store.dispatch(addExpense({ description: 'water bill', amount: 1000, createdAt: '2020-05-12' }));
-store.dispatch(addExpense({ description: 'house', amount: 45000000, createdAt: '2020-08-12' }));
-store.dispatch(addExpense({ description: 'gas bill', amount: 12000, createdAt: '2020-02-12' }));
-store.dispatch(addExpense({ description: 'shoe lacess bill', amount: 1200, createdAt: '2020-05-12' }));
-store.dispatch(addExpense({ description: 'food bill', amount: 12500, createdAt: '2020-09-12' }));
-store.dispatch(addExpense({ description: 'clothes bill', amount: 35000, createdAt: '2020-05-16' }));
-store.dispatch(addExpense({ description: 'shoes bill', amount: 45000, createdAt: '2019-08-12' }));
-
-const { expenses, filters } = store.getState();
-getVisibleExpenses(expenses, filters);
 
 const jsx = (
     <Provider store={store}>
@@ -27,4 +16,8 @@ const jsx = (
     </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'));
+});
