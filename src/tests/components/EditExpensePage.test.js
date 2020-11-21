@@ -4,16 +4,16 @@ import expenses from '../fixtures/expenses';
 import { EditExpensePage } from '../../components/EditExpensePage';
 
 describe('Tests agains valid data', () => {
-    let history, startRemoveExpense, updateExpense, wrapper;
+    let history, startRemoveExpense, startUpdateExpense, wrapper;
     beforeEach(() => {
-        updateExpense = jest.fn();
+        startUpdateExpense = jest.fn();
         startRemoveExpense = jest.fn();
         history = { push: jest.fn() };
         wrapper = shallow(
             <EditExpensePage
                 expense={expenses[0]}
                 startRemoveExpense={startRemoveExpense}
-                updateExpense={updateExpense}
+                startUpdateExpense={startUpdateExpense}
                 history={history}
             />);
     });
@@ -24,9 +24,9 @@ describe('Tests agains valid data', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    test('Should call updateExpense with properties on valid form submission', () => {
+    test('Should call startUpdateExpense with properties on valid form submission', () => {
         wrapper.find('ExpenseForm').prop('onSubmit')(expenses[0]);
-        expect(updateExpense).toHaveBeenLastCalledWith(expenses[0].id, expenses[0]);
+        expect(startUpdateExpense).toHaveBeenLastCalledWith(expenses[0].id, expenses[0]);
         expect(history.push).toHaveBeenLastCalledWith('/');
     });
 

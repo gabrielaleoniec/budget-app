@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import ExpenseForm from './ExpenseForm';
-import { updateExpense, startRemoveExpense } from '../actions/expenses';
+import { startUpdateExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
     onSubmit = (expense) => {
         const createdAt = typeof expense.createdAt === 'string' ? moment(expense.createdAt).valueOf() : expense.createdAt;
 
-        this.props.updateExpense(this.props.expense.id, { ...expense, createdAt });
+        this.props.startUpdateExpense(this.props.expense.id, { ...expense, createdAt });
         this.props.history.push('/');
     }
 
@@ -35,7 +35,7 @@ export class EditExpensePage extends React.Component {
     }
 }
 const mapDispatchToProps = (dispatch, props) => ({
-    updateExpense: (id, expense) => dispatch(updateExpense(id, expense)),
+    startUpdateExpense: (id, expense) => dispatch(startUpdateExpense(id, expense)),
     startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
 })
 

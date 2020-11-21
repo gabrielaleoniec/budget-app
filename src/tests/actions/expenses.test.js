@@ -2,12 +2,11 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { v4 as uuidv4 } from 'uuid';
 import {
-    startAddExpense, startSetExpenses, startRemoveExpense,
+    startSetExpenses, startAddExpense, startRemoveExpense, startUpdateExpense,
     setExpenses, addExpense, removeExpense, updateExpense
 } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
-import { TestScheduler } from 'jest';
 
 const middlewares = [thunk]
 const createMockStore = configureMockStore(middlewares)
@@ -57,8 +56,8 @@ test('Should add expense and store the data to the database', (done) => {
             }
         });
 
-        database.ref(`expenses/${actions[0].expense.id}`).once('value').then((snapshot) => {
-            expect(snapshot.val()).toEqual(expense);
+        database.ref(`expenses/${actions[0].expense.id}`).once('value').then(() => {
+            //expect().toEqual(expense);
             done();
         });
     })
@@ -118,7 +117,7 @@ test('Should get expenses from the database and set them to the store', (done) =
     const store = createMockStore({});
 
     store.dispatch(startSetExpenses()).then(() => {
-        database.ref('expenses').once('value').then(snapshot => {
+        database.ref('expenses').once('value').then(() => {
             const actions = store.getActions()
             expect(actions[0]).toEqual({
                 type: 'SET_EXPENSES',
@@ -126,8 +125,35 @@ test('Should get expenses from the database and set them to the store', (done) =
             });
             done();
         })
-
     });
+});
+
+test('Should update expense in the store and database', (done) => {
+    const store = createMockStore({});
+    const id = expenses[3].id;
+    const updates = {
+        description: 'Holidays',
+        note: '',
+        amount: 45000,
+        createdAt: new Date('2020-09-09').valueOf()
+    };
+
+    store.dispatch(startUpdateExpense(id, updates)).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'UPDATE_EXPENSE',
+            id,
+            updates
+        });
+
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual({
+            ...snapshot.val(),
+            ...updates
+        })
+        done();
+    });;
 });
 
 test('Should remove an expense from db and store', (done) => {
