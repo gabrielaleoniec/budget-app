@@ -56,11 +56,11 @@ test('Should add expense and store the data to the database', (done) => {
             }
         });
 
-        database.ref(`expenses/${actions[0].expense.id}`).once('value').then(() => {
-            //expect().toEqual(expense);
-            done();
-        });
-    })
+        return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual(expense);
+        done();
+    });
 });
 
 test('Should not add expense with defaults and store the data to the database', (done) => {
