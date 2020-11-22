@@ -11,6 +11,8 @@ import database from '../../firebase/firebase';
 const middlewares = [thunk]
 const createMockStore = configureMockStore(middlewares)
 
+const mockUID = 'thisismymockUID';
+const defaultAuthStore = { auth: { uid: mockUID } };
 const mockID = uuidv4();
 const now = new Date('2020-11-10');
 const mockExpense = {
@@ -26,7 +28,7 @@ beforeEach((done) => {
     expenses.forEach(({ id, description, note, amount, createdAt }) => {
         expensesData[id] = { description, note, amount, createdAt };
     });
-    database.ref('expenses').set(expensesData);
+    database.ref(`users/${mockUID}/expenses`).set(expensesData);
     done();
 });
 
@@ -39,7 +41,7 @@ test('Should setup add expense action object with given parameters', () => {
 })
 
 test('Should add expense and store the data to the database', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthStore);
     const expense = {
         description: 'Mouse',
         note: '',
@@ -56,7 +58,7 @@ test('Should add expense and store the data to the database', (done) => {
             }
         });
 
-        return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+        return database.ref(`users/${mockUID}/expenses/${actions[0].expense.id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual(expense);
         done();
@@ -64,7 +66,7 @@ test('Should add expense and store the data to the database', (done) => {
 });
 
 test('Should not add expense with defaults and store the data to the database', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthStore);
 
     store.dispatch(startAddExpense({})).then(() => {
         const actions = store.getActions({});
@@ -80,7 +82,7 @@ test('Should not add expense with defaults and store the data to the database', 
             }
         });
 
-        database.ref(`expenses/${actions[0].expense.id}`).once('value', (snapshot) => {
+        database.ref(`users/${mockUID}/expenses/${actions[0].expense.id}`).once('value', (snapshot) => {
             expect(snapshot.val()).toBeFalsy();
         })
 
@@ -114,10 +116,10 @@ test('Should set expenses action with given parameters', () => {
 });
 
 test('Should get expenses from the database and set them to the store', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthStore);
 
     store.dispatch(startSetExpenses()).then(() => {
-        database.ref('expenses').once('value').then(() => {
+        database.ref(`users/${mockUID}/expenses`).once('value').then(() => {
             const actions = store.getActions()
             expect(actions[0]).toEqual({
                 type: 'SET_EXPENSES',
@@ -129,7 +131,7 @@ test('Should get expenses from the database and set them to the store', (done) =
 });
 
 test('Should update expense in the store and database', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthStore);
     const id = expenses[3].id;
     const updates = {
         description: 'Holidays',
@@ -146,7 +148,7 @@ test('Should update expense in the store and database', (done) => {
             updates
         });
 
-        return database.ref(`expenses/${id}`).once('value');
+        return database.ref(`users/${mockUID}/expenses/${id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual({
             ...snapshot.val(),
@@ -157,7 +159,7 @@ test('Should update expense in the store and database', (done) => {
 });
 
 test('Should remove an expense from db and store', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthStore);
     const id = expenses[0].id;
     store.dispatch(startRemoveExpense({ id })).then(() => {
         const actions = store.getActions();
@@ -166,7 +168,7 @@ test('Should remove an expense from db and store', (done) => {
             id
         });
 
-        return database.ref(`expenses/${id}`).once('value');
+        return database.ref(`users/${mockUID}/expenses/${id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toBeFalsy();
         done();
