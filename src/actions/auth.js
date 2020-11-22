@@ -5,3 +5,9 @@ export const startLogIn = () => {
         return firebase.auth().signInWithPopup(googleAuthProvider);
     }
 }
+
+export const startLogOut = () => {
+    return () => {
+        return firebase.auth().signOut();
+    }
+}
