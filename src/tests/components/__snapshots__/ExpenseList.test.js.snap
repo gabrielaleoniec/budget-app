@@ -1,10 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render ExpenseList with expenses 1`] = `
-<div>
-  <h3>
-    Expense List
-  </h3>
+<div
+  className="content-container"
+>
+  <div>
+    <h3>
+      Expense List
+    </h3>
+  </div>
   <div>
     <_default />
     <ExpenseListItem
@@ -44,7 +48,23 @@ exports[`Should render ExpenseList with expenses 1`] = `
 `;
 
 exports[`Should render ExpenseList with no expenses 1`] = `
-<p>
-  The list of expenses is empty
-</p>
+<div
+  className="content-container"
+>
+  <div>
+    <h3>
+      Expense List
+    </h3>
+  </div>
+  <div>
+    <_default />
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No expenses
+      </span>
+    </div>
+  </div>
+</div>
 `;

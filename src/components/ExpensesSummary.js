@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import getExpensesTotal from '../selectors/expenses-total';
 import getVisibleExpenses from '../selectors/expenses';
 
 export const ExpensesSummary = ({ totalAmount, expenseCount }) => {
     const expenseWord = expenseCount === 1 ? 'expense' : 'expenses';
     const beWord = expenseCount === 1 ? 'is' : 'are';
-    return <h2>`There {beWord} {expenseCount} {expenseWord} totalling to {totalAmount}</h2>
+    return <div className="page-header">
+        <div className="content-container">
+            <h2 className="page-header__title">There {beWord} <span>{expenseCount}</span> {expenseWord} totalling to <span>{totalAmount}</span></h2>
+            <div>
+                <Link to="/create" activeClassName="is-active" className="button">Create</Link>
+            </div>
+        </div>
+    </div>
 }
 
 const mapStateToProps = (state) => {

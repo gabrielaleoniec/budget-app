@@ -1,0 +1,43 @@
+.input-group {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    margin-bottom: $s-size;
+    max-width: 100vw;
+    padding: $s-size 0;
+}
+
+.input-group__item {
+    display: block;
+    margin-bottom: $s-size;
+
+    &>input,
+    &>textarea,
+    &>select {
+        width: 316px;
+    }
+}
+
+@media(min-width: $desktop-breakpoint) {
+    .input-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: $l-size;
+    }
+
+    .input-group__item {
+        margin-right: $s-size;
+        margin-bottom: 0;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &>input,
+        &>textarea,
+        &>select {
+            width: auto;
+        }
+    }
+}

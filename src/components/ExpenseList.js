@@ -5,15 +5,17 @@ import filteredExpenses from '../selectors/expenses';
 import ExpenseListHeader from './ExpenseListHeader';
 
 export const ExpenseList = (props) => {
-    if(!props.expenses.length) {
-        return <p>The list of expenses is empty</p>
-    }
-
     return (
-        <div>
-            <h3>Expense List</h3>
+        <div className="content-container">
             <div>
-                <ExpenseListHeader/>
+                <h3>Expense List</h3>
+            </div>
+            <div>
+                <ExpenseListHeader />
+                {(!props.expenses.length) && <div className="list-item list-item--message">
+                        <span>No expenses</span>
+                    </div>
+                }
                 {props.expenses.map((expense) => {
                     return <ExpenseListItem key={expense.id} {...expense} />
                 })}

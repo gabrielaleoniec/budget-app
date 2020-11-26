@@ -4,9 +4,9 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-switch(process.env.NODE_ENV) {
-    case 'test': require('dotenv').config({path: '.env.test'}); break;
-    case 'development': require('dotenv').config({path: '.env.development'}); break;
+switch (process.env.NODE_ENV) {
+    case 'test': require('dotenv').config({ path: '.env.test' }); break;
+    case 'development': require('dotenv').config({ path: '.env.development' }); break;
 }
 
 module.exports = (env) => {
@@ -28,7 +28,13 @@ module.exports = (env) => {
                 {
                     use: [
                         MiniCSSExtractPlugin.loader,
-                        'css-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true,
+                                url: false
+                            }
+                        },
                         'sass-loader'
                     ],
                     test: /\.s?css$/

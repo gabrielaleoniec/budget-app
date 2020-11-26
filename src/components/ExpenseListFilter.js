@@ -36,39 +36,49 @@ export class ExpenseListFilter extends React.Component {
     onFocusChange = focusedInput => this.setState({ focusedInput });
 
     render() {
-        return <div>
-            <input
-                type="text"
-                value={this.props.filters.text}
-                onChange={this.onTextChange}
-            />
-            <div>
-                <DateRangePicker
-                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                    startDateId="filter_start_date" // PropTypes.string.isRequired,
-                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                    endDateId="filter_end_date" // PropTypes.string.isRequired,
-                    onDatesChange={this.onDatesChange} // PropTypes.func.isRequired,
-                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                    onFocusChange={this.onFocusChange} // PropTypes.func.isRequired,
-                    displayFormat="DD-MM-YYYY"
-                    numberOfMonths={1}
-                    isOutsideRange={()=>false}
-                    showClearDates={true}
-                />
+        return (
+            <div className="content-container">
+                <div className="input-group">
+                    <div className="input-group__item">
+                        <input
+                            type="text"
+                            value={this.props.filters.text}
+                            onChange={this.onTextChange}
+                            placeholder="Search expenses"
+                            className="text-input"
+                        />
+                    </div>
+                    <div className="input-group__item">
+                        <DateRangePicker
+                            startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                            startDateId="filter_start_date" // PropTypes.string.isRequired,
+                            endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                            endDateId="filter_end_date" // PropTypes.string.isRequired,
+                            onDatesChange={this.onDatesChange} // PropTypes.func.isRequired,
+                            focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                            onFocusChange={this.onFocusChange} // PropTypes.func.isRequired,
+                            displayFormat="DD-MM-YYYY"
+                            numberOfMonths={1}
+                            isOutsideRange={() => false}
+                            showClearDates={true}
+                        />
+                    </div>
+                    <div className="input-group__item">
+                        <select
+                            value={this.props.filters.sortBy}
+                            onChange={this.onSortChange}
+                            className="select">
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-
-            <select
-                value={this.props.filters.sortBy}
-                onChange={this.onSortChange}>
-                <option value="date">Date</option>
-                <option value="amount">Amount</option>
-            </select>
-        </div>
+        )
     }
 }
 
-const mapDispatchToProps = (dispatch) =>({
+const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
     setEndDate: (endDate) => dispatch(setEndDate(endDate)),

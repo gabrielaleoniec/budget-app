@@ -69,45 +69,52 @@ class ExpenseForm extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
-                    <label>Description
+            <form onSubmit={this.onSubmit} className="form input-group">
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
+                <label className="input-group__item">
+                <span className="sr-only">Description</span>
                     <input
-                            type="text"
-                            name="description"
-                            autoFocus
-                            value={this.state.description}
-                            onChange={this.onDescriptionChange} />
-                    </label>
-                    <label>Note
+                        type="text"
+                        name="description"
+                        autoFocus
+                        value={this.state.description}
+                        onChange={this.onDescriptionChange}
+                        className="text-input"
+                        placeholder="Description" />
+                </label>
+                <label className="input-group__item">
+                <span className="sr-only">Note</span>
                     <textarea
-                            name="note"
-                            onChange={this.onNoteChange}
-                            placeholder="Put some note here"
-                            value={this.state.note}
-                        >
-                        </textarea>
-                    </label>
-                    <label>Amount
+                        name="note"
+                        onChange={this.onNoteChange}
+                        placeholder="Put some note here"
+                        value={this.state.note}
+                        className="textarea"
+                    >
+                    </textarea>
+                </label>
+                <label className="input-group__item">
+                <span className="sr-only">Amount</span>
                     <input
-                            type="number"
-                            name="amount"
-                            value={this.state.amount}
-                            onChange={this.onAmountChange}
-                        />
-                    </label>
-                    <label>
-                        Created at:
+                        type="number"
+                        name="amount"
+                        value={this.state.amount}
+                        onChange={this.onAmountChange}
+                        className="text-input"
+                        placeholder="Amount"
+                    />
+                </label>
+                <label className="input-group__item">
+                <span className="sr-only">Created</span>
                     <input
-                            type="date"
-                            name="createdAt"
-                            value={this.state.createdAt}
-                            onChange={this.onCreatedAtChange} />
-                    </label>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+                        type="date"
+                        name="createdAt"
+                        value={this.state.createdAt}
+                        onChange={this.onCreatedAtChange}
+                        className="select" />
+                </label>
+                <button type="submit" className="button">Save expense</button>
+            </form>
         );
     }
 }

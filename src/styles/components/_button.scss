@@ -1,0 +1,32 @@
+.button {
+    background-color: $vivid-blue;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1;
+    padding: $xs-size $s-size;
+    text-decoration: none;
+    transition: background-color ease-in-out .4;
+
+    &:hover {
+        background-color: darken($vivid-blue, 10%);
+    }
+
+    &--link {
+        background-color: transparent;
+        display: inline;
+
+        &:hover {
+            background-color: transparent;
+            text-decoration: underline;
+        }
+    }
+
+    &--remove {
+        background-color: $red;
+        
+    }
+}
