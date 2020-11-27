@@ -1,0 +1,16 @@
+.confirmation-box {
+    background-color: $white;
+    border: 1px solid $light-grey;
+    opacity: 0;
+    padding: $l-size;
+    transition: opacity ease .5s;
+}
+
+.confirmation-box--show {
+    opacity: 1;
+}
+
+.confirmation-box__buttons {
+    display: flex;
+    justify-content: space-between;
+}

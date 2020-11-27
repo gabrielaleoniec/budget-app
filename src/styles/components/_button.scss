@@ -27,6 +27,9 @@
 
     &--remove {
         background-color: $red;
-        
+    }
+
+    &--weak {
+        background-color: $light-grey;
     }
 }

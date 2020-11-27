@@ -25,7 +25,6 @@ exports[`Should correctly render ExpensesSummary for multiple expenses 1`] = `
     </h2>
     <div>
       <Link
-        activeClassName="is-active"
         className="button"
         to="/create"
       >
@@ -61,7 +60,6 @@ exports[`Should correctly render ExpensesSummary for multiple expenses 2`] = `
     </h2>
     <div>
       <Link
-        activeClassName="is-active"
         className="button"
         to="/create"
       >

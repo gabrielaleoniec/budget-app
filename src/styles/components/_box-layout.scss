@@ -1,11 +1,21 @@
 .box-layout {
     align-items: center;
-    background: url('/img/gdansk.jpg');
-    background-size: cover;
     display: flex;
     height: 100vh;
     justify-content: center;
     width: 100vw;
+}
+
+.box-layout--background {
+    background: url('/img/gdansk.jpg');
+    background-size: cover;
+}
+
+.box-layout--cover {
+    background-color: fade-out(white, .15);
+    left: 0;
+    position: fixed;
+    top: 0;
 }
 
 .box-layout__box {

@@ -2,7 +2,7 @@
 
 exports[`Should render LoginPage correctly 1`] = `
 <div
-  className="box-layout"
+  className="box-layout box-layout--background"
 >
   <div
     className="box-layout__box"
