@@ -30,10 +30,16 @@ describe('Tests agains valid data', () => {
         expect(history.push).toHaveBeenLastCalledWith('/');
     });
 
-    test('Should call startRemoveExpense with right properties on button click ', () => {
+    test('Should call showConfirmationModal with right properties on button click ', () => {
+        jest.useFakeTimers();
+        expect(wrapper.find('button').length).toBe(1);
         wrapper.find('button').simulate('click');
-        expect(startRemoveExpense).toHaveBeenLastCalledWith({ id: expenses[0].id });
-        expect(history.push).toHaveBeenLastCalledWith('/');
+        expect(wrapper.state('showConfirmation')).toBe(true);
+        jest.runAllTimers();
+        expect(setTimeout).toHaveBeenCalledTimes(1);
+        expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 500);
+        expect(wrapper.state('showConfirmationBox')).toBe(true);
+
     });
 });
 

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should have proper css class on showConfirmationBox true 1`] = `
+<div
+  className="box-layout box-layout--cover"
+>
+  <div
+    className="confirmation-box confirmation-box--show"
+  >
+    <p>
+      Should the expense be removed?
+    </p>
+    <div
+      className="confirmation-box__buttons"
+    >
+      <button
+        className="button button--weak"
+        onClick={[MockFunction]}
+      >
+        Cancel
+      </button>
+      <button
+        className="button button--remove"
+        onClick={[MockFunction]}
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Should render ConfirmationModal correctly 1`] = `
+<div
+  className="box-layout box-layout--cover"
+>
+  <div
+    className="confirmation-box "
+  >
+    <p>
+      Should the expense be removed?
+    </p>
+    <div
+      className="confirmation-box__buttons"
+    >
+      <button
+        className="button button--weak"
+        onClick={[MockFunction]}
+      >
+        Cancel
+      </button>
+      <button
+        className="button button--remove"
+        onClick={[MockFunction]}
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
+`;

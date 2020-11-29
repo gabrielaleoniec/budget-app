@@ -83,17 +83,6 @@ class ExpenseForm extends React.Component {
                         placeholder="Description" />
                 </label>
                 <label className="input-group__item">
-                <span className="sr-only">Note</span>
-                    <textarea
-                        name="note"
-                        onChange={this.onNoteChange}
-                        placeholder="Put some note here"
-                        value={this.state.note}
-                        className="textarea"
-                    >
-                    </textarea>
-                </label>
-                <label className="input-group__item">
                 <span className="sr-only">Amount</span>
                     <input
                         type="number"
@@ -112,6 +101,17 @@ class ExpenseForm extends React.Component {
                         value={this.state.createdAt}
                         onChange={this.onCreatedAtChange}
                         className="select" />
+                </label>
+                <label className="input-group__item">
+                <span className="sr-only">Note</span>
+                    <textarea
+                        name="note"
+                        onChange={this.onNoteChange}
+                        placeholder="Put some note here"
+                        value={this.state.note}
+                        className="textarea"
+                    >
+                    </textarea>
                 </label>
                 <button type="submit" className="button">Save expense</button>
             </form>

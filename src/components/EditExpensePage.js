@@ -52,10 +52,6 @@ export class EditExpensePage extends React.Component {
         }, this.state.time);
     }
 
-    addClassname = () => {
-
-    }
-
     render() {
         if (!this.props.expense || !this.props.expense.id) {
             return <p>Expense for the given id does not exist</p>
@@ -68,13 +64,12 @@ export class EditExpensePage extends React.Component {
                         <h2 className="page-header__title">Edit expense</h2>
                     </div>
                 </div>
-                <div className="content-container">
+                <div className="content-container content-container--spaceBottom">
                     <ExpenseForm onSubmit={this.onSubmit} expense={this.props.expense} />
                     <button onClick={this.showConfirmationModal} className="button button--remove">Remove expense</button>
                     {(this.state.showConfirmation || this.state.showConfirmationBox) && <Confirmation
                         removeExpense={this.onRemove}
                         hideConfirmationModal={this.hideConfirmationModal}
-                        time={this.state.time}
                         showConfirmationBox={this.state.showConfirmationBox}
                     />}
                 </div>

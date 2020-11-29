@@ -16,7 +16,7 @@ exports[`Tests agains valid data Should render EditExpensePage correctly 1`] = `
     </div>
   </div>
   <div
-    className="content-container"
+    className="content-container content-container--spaceBottom"
   >
     <ExpenseForm
       expense={
