@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should correctly render ExpensesSummary for multiple expenses 1`] = `
+exports[`Should correctly render ExpensesSummary for multiple expenses out of many 1`] = `
 <div
   className="page-header"
 >
@@ -23,6 +23,15 @@ exports[`Should correctly render ExpensesSummary for multiple expenses 1`] = `
         1200
       </span>
     </h2>
+    <p>
+      Not showing 
+      3
+       out of 
+      6
+       
+      expenses
+       because of filters
+    </p>
     <div>
       <Link
         className="button"
@@ -35,7 +44,51 @@ exports[`Should correctly render ExpensesSummary for multiple expenses 1`] = `
 </div>
 `;
 
-exports[`Should correctly render ExpensesSummary for multiple expenses 2`] = `
+exports[`Should correctly render ExpensesSummary for single expense out of many 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h2
+      className="page-header__title"
+    >
+      There 
+      is
+       
+      <span>
+        1
+      </span>
+       
+      expense
+       totalling to 
+      <span>
+        1200
+      </span>
+    </h2>
+    <p>
+      Not showing 
+      5
+       out of 
+      6
+       
+      expenses
+       because of filters
+    </p>
+    <div>
+      <Link
+        className="button"
+        to="/create"
+      >
+        Create
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Should correctly render ExpensesSummary for single expense out of one 1`] = `
 <div
   className="page-header"
 >
