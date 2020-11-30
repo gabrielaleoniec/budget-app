@@ -32,4 +32,8 @@
     &--weak {
         background-color: $light-grey;
     }
+
+    &--margin-bottom {
+        margin-bottom: $m-size;
+    }
 }

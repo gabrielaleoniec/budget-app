@@ -1,6 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { login, logout, startLogIn, startLogOut } from '../../actions/auth';
+import { login, logout} from '../../actions/auth';
+import firebase from 'firebase';
 
 const middlewares = [thunk];
 const createMockStore = configureMockStore(middlewares);
@@ -20,12 +21,5 @@ test('Should set login action object with given parameters', () => {
 test('Should setup logout action object', () => {
     expect(logout()).toEqual({
         type: 'LOGOUT'
-    })
-});
-
-test('Should display a sign in Google popup on startLogIn', () => {
-    const store = createMockStore({});
-    store.dispatch(startLogIn()).then(() => {
-        const actions = store.getActions();
     })
 });
