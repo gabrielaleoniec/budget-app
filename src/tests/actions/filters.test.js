@@ -19,14 +19,16 @@ test('Should setup the text filter action object with default', () => {
 test('Should setup the sort by date action object', () => {
     expect(sortByDate()).toEqual({
         type: "SORT_BY",
-        sortBy: 'createdAt'
+        sortBy: 'createdAt', 
+        sortByAsc: false
     })
 });
 
 test('Should setup the sort by amount action object', () => {
     expect(sortByAmount()).toEqual({
         type: "SORT_BY",
-        sortBy: 'amount'
+        sortBy: 'amount',
+        sortByAsc: false
     });
 });
 

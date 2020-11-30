@@ -36,4 +36,78 @@
     &--margin-bottom {
         margin-bottom: $m-size;
     }
+
+    &--sort {
+        background-color: transparent;
+        padding: 0 $m-size 0 $xs-size;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &::before,
+        &::after {
+            border: 6px solid transparent;
+            content: '';
+            display: block;
+            height: 0;
+            margin-bottom: 2px;
+            width: 0;
+        }
+
+        &::before {
+            border-bottom: 8px solid $vivid-blue;
+        }
+
+        &::after {
+            border-top: 8px solid $vivid-blue;
+        }
+
+        &:hover {
+            &::before {
+                border-bottom: 8px solid $red;
+            }
+    
+            &::after {
+                border-top: 8px solid $red;
+            }
+        }
+        &:focus {
+            &::before {
+                border-bottom: 8px solid $emerald;
+            }
+    
+            &::after {
+                border-top: 8px solid $emerald;
+            }
+        }
+    }
+
+    &--top {
+        position: relative;
+
+        &::before {
+            position: absolute;
+            top: -4px;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+
+    &--down {
+        position: relative;
+
+        &::before {
+            display: none;
+        }
+
+        &::after {
+            position: absolute;
+            top: 4px;
+            transform: translateY(-50%);
+        }
+    }
 }

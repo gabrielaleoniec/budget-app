@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import moment from 'moment';
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
+import { setTextFilter, setStartDate, setEndDate } from '../actions/filters';
 
 export class ExpenseListFilter extends React.Component {
     constructor(props) {
@@ -24,13 +24,6 @@ export class ExpenseListFilter extends React.Component {
         this.setState({ startDate, endDate })
         this.props.setStartDate(startDate);
         this.props.setEndDate(endDate);
-    }
-
-    onSortChange = (e) => {
-        switch (e.target.value) {
-            case 'date': return this.props.sortByDate();
-            case 'amount': return this.props.sortByAmount();
-        }
     }
 
     onFocusChange = focusedInput => this.setState({ focusedInput });
@@ -63,15 +56,6 @@ export class ExpenseListFilter extends React.Component {
                             showClearDates={true}
                         />
                     </div>
-                    <div className="input-group__item">
-                        <select
-                            value={this.props.filters.sortBy}
-                            onChange={this.onSortChange}
-                            className="select">
-                            <option value="date">Date</option>
-                            <option value="amount">Amount</option>
-                        </select>
-                    </div>
                 </div>
             </div>
         )
@@ -81,9 +65,7 @@ export class ExpenseListFilter extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
-    setEndDate: (endDate) => dispatch(setEndDate(endDate)),
-    sortByDate: () => dispatch(sortByDate()),
-    sortByAmount: () => dispatch(sortByAmount())
+    setEndDate: (endDate) => dispatch(setEndDate(endDate))
 })
 
 const mapStateToProps = (state) => ({

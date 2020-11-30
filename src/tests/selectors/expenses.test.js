@@ -6,6 +6,7 @@ test('Should filter by text criteria', () => {
     const filters = {
         text: 'food',
         sortBy: 'createdBy',
+        sortByAsc: true,
         startDate: undefined,
         endDate: undefined
     }
@@ -17,6 +18,7 @@ test('Should filter by startDate', () => {
     const filters = {
         text: '',
         sortBy: 'createdAt',
+        sortByAsc: true,
         startDate: new Date('2020-05-01').valueOf(),
         endDate: undefined
     };
@@ -29,6 +31,7 @@ test('Should filter by end date', () => {
     const filters = {
         text: '',
         sortBy: 'createdAt',
+        sortByAsc: true,
         startDate: undefined,
         endDate: new Date('2020-05-01').valueOf()
     };
@@ -41,6 +44,7 @@ test('Should sort by date', () => {
     const filters = {
         text: '',
         sortBy: 'createdAt',
+        sortByAsc: true,
         startDate: undefined,
         endDate: undefined
     };
@@ -52,6 +56,7 @@ test('Should sort by amount', () => {
     const filters = {
         text: '',
         sortBy: 'amount',
+        sortByAsc: true,
         startDate: undefined,
         endDate: undefined
     };

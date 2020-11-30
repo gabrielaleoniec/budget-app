@@ -5,28 +5,23 @@ import { filters, altFilters } from '../fixtures/filters';
 import { DateRangePicker } from 'react-dates';
 import { ExpenseListFilter } from '../../components/ExpenseListFilter';
 
-let setTextFilter, setStartDate, setEndDate, sortByDate, sortByAmount, wrapper;
+let setTextFilter, setStartDate, setEndDate, wrapper;
 beforeEach(() => {
     setTextFilter = jest.fn();
     setStartDate = jest.fn();
     setEndDate = jest.fn();
-    sortByDate = jest.fn();
-    sortByAmount = jest.fn();
     wrapper = shallow(
         <ExpenseListFilter
             filters={filters}
             setTextFilter={setTextFilter}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
-            sortByDate={sortByDate}
-            sortByAmount={sortByAmount}
         />);
 });
 
 test('Should render ExpenseListFilter correctly', () => {
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('select').length).toBe(1);
     expect(wrapper.find('input').length).toBe(1);
 });
 
@@ -35,7 +30,6 @@ test('Should render ExpenseListFilter with alt filters correctly', () => {
         filters: altFilters
     });
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('select').length).toBe(1);
     expect(wrapper.find('input').length).toBe(1);
 });
 
@@ -54,23 +48,6 @@ test('Should handle date change', () => {
         startDate, endDate
     });
     expect(setStartDate).toHaveBeenLastCalledWith(startDate);
-});
-
-test('Should handle sort by date', () => {
-    wrapper.setProps({
-        filters: altFilters
-    })
-    wrapper.find('select').simulate('change', {
-        target: { value: 'date' }
-    });
-    expect(sortByDate).toHaveBeenCalled();
-});
-
-test('Should handle sort by amount', () => {
-    wrapper.find('select').simulate('change', {
-        target: { value: 'amount' }
-    });
-    expect(sortByAmount).toHaveBeenCalled();
 });
 
 test('Should handle date focus change', () => {

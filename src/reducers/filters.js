@@ -3,6 +3,7 @@ import moment from 'moment';
 const defaultStateFilterReducer = {
     text: '',
     sortBy: 'createdAt',
+    sortByAsc: false,
     startDate: moment().startOf('month').valueOf(),
     endDate: moment().endOf('month').valueOf()
 }
@@ -15,9 +16,11 @@ const filterReducer = (state = defaultStateFilterReducer, action) => {
                 text: action.text
             }
         case 'SORT_BY':
+            console.log('reducer', action);
             return {
                 ...state,
-                sortBy: action.sortBy
+                sortBy: action.sortBy,
+                sortByAsc: action.sortByAsc
             }
         case 'SET_START_DATE':
             return {

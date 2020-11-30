@@ -10,7 +10,7 @@ exports[`Should render ExpenseList with expenses 1`] = `
     </h3>
   </div>
   <div>
-    <_default />
+    <Connect(ExpenseListHeader) />
     <ExpenseListItem
       amount={45000}
       createdAt={1592092800000}
@@ -57,7 +57,7 @@ exports[`Should render ExpenseList with no expenses 1`] = `
     </h3>
   </div>
   <div>
-    <_default />
+    <Connect(ExpenseListHeader) />
     <div
       className="list-item list-item--message"
     >

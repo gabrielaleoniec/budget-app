@@ -5,20 +5,22 @@ exports[`Should render ExpenseListItem with properties 1`] = `
   className="list-item"
   to="/edit/1"
 >
-  <div>
-    <h3
-      className="list-item__title"
-    >
+  <div
+    className="list-item__title"
+  >
+    <h3>
       Shoes
     </h3>
-    <div>
-      Too expensive
-    </div>
     <div
       className="list-item__subtitle"
     >
-      2020-06-14
+      Too expensive
     </div>
+  </div>
+  <div
+    className="list-item__date"
+  >
+    2020-06-14
   </div>
   <strong
     className="list-item__amount"

@@ -125,26 +125,6 @@ exports[`Should render ExpenseListFilter correctly 1`] = `
         withPortal={false}
       />
     </div>
-    <div
-      className="input-group__item"
-    >
-      <select
-        className="select"
-        onChange={[Function]}
-        value="createdAt"
-      >
-        <option
-          value="date"
-        >
-          Date
-        </option>
-        <option
-          value="amount"
-        >
-          Amount
-        </option>
-      </select>
-    </div>
   </div>
 </div>
 `;
@@ -273,26 +253,6 @@ exports[`Should render ExpenseListFilter with alt filters correctly 1`] = `
         withFullScreenPortal={false}
         withPortal={false}
       />
-    </div>
-    <div
-      className="input-group__item"
-    >
-      <select
-        className="select"
-        onChange={[Function]}
-        value="amount"
-      >
-        <option
-          value="date"
-        >
-          Date
-        </option>
-        <option
-          value="amount"
-        >
-          Amount
-        </option>
-      </select>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import filterReducer from '../../reducers/filters';
 const mockFilter = {
     text: '',
     sortBy: 'createdAt',
+    sortByAsc: false,
     startDate: moment().startOf('month').valueOf(),
     endDate: moment().endOf('month').valueOf()
 }
@@ -21,11 +22,21 @@ test('Should set text filter', () => {
     })
 });
 
-test('Should setup sorting filter', () => { 
-    const state = filterReducer(undefined, {type: 'SORT_BY', sortBy: 'amount'});
+test('Should setup sorting by date filter', () => { 
+    const state = filterReducer(undefined, {type: 'SORT_BY', sortBy: 'createdAt', sortByAsc: true});
     expect(state).toEqual({
         ...mockFilter,
-        sortBy: 'amount'
+        sortBy: 'createdAt',
+        sortByAsc: true
+    })
+});
+
+test('Should setup sorting by amount filter', () => { 
+    const state = filterReducer(undefined, {type: 'SORT_BY', sortBy: 'amount', sortByAsc: false});
+    expect(state).toEqual({
+        ...mockFilter,
+        sortBy: 'amount',
+        sortByAsc: false
     })
 });
 

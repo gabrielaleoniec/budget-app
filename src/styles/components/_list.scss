@@ -28,12 +28,15 @@
 
     &__amount {
         display: block;
-        margin: $s-size 0 0 0; 
+        margin: $s-size 0 0 0;
     }
 
     &__title {
-        margin: 0;
         word-break: break-all;
+
+        h3 {
+            margin: 0;
+        }
     }
 
     &__subtitle {
@@ -52,12 +55,41 @@
 }
 
 @media(min-width: $desktop-breakpoint) {
+
+    .list-header,
     .list-item {
-        align-items: center;
+        &__title {
+            flex: 1 1 50%;
+            padding-right: $m-size;
+        }
+
+        &__date {
+            flex: 0 0 10%;
+        }
+
+        &__amount {
+            flex: 2 1 10%;
+            justify-content: right;
+            text-align: right;
+            word-wrap: anywhere;
+        }
+    }
+
+    .list-header {
+        &__title,
+        &__date,
+        &__amount {
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    .list-item {
+        align-items: end;
         flex-direction: row;
         justify-content: space-between;
         padding: $m-size;
-        
+
         &__amount {
             margin: 0;
             padding-left: $l-size;

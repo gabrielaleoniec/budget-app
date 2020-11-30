@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render ExpenseListHeader correctly 1`] = `
+<div
+  className="list-header"
+>
+  <div
+    className="show-for-mobile"
+  >
+    Expenses
+  </div>
+  <div
+    className="show-for-desktop list-header__title"
+  >
+    Expense
+  </div>
+  <div
+    className="show-for-desktop list-header__date"
+  >
+    Date
+    <button
+      className="button button--sort button--down"
+      onClick={[Function]}
+    >
+      <span
+        className="sr-only"
+      >
+        Sort by date
+      </span>
+    </button>
+  </div>
+  <div
+    className="show-for-desktop list-header__amount"
+  >
+    Amount
+    <button
+      className="button button--sort false"
+      onClick={[Function]}
+    >
+      <span
+        className="sr-only"
+      >
+        Sort by amount
+      </span>
+    </button>
+  </div>
+</div>
+`;
